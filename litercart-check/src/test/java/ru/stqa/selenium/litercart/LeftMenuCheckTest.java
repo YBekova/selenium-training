@@ -18,7 +18,7 @@ public class LeftMenuCheckTest extends TestBase {
     List<WebElement> leftMenu = driver.findElements(By.xpath("//ul[@id='box-apps-menu']/li"));
 
     for (WebElement element : leftMenu) {
-      leftMenuList.add(element.findElement(By.tagName("a")).getText());
+      leftMenuList.add(element.getText());
     }
 
     for (int i = 0; i < leftMenuList.size(); i++) {
@@ -33,7 +33,7 @@ public class LeftMenuCheckTest extends TestBase {
 
       if (subMenu.size() > 0) {
         for (WebElement element : subMenu) {
-          leftSubMenuList.add(element.findElement(By.tagName("a")).getText());
+          leftSubMenuList.add(element.getText());
         }
 
         for (int n = 0; n < leftSubMenuList.size(); n++) {
