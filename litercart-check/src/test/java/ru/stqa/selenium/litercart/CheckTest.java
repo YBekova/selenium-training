@@ -61,8 +61,7 @@ public class CheckTest extends TestBase{
 
   @Test
   public void checkZonesTest(){
-
-
+    
     LoginTest.logInAdmin(TestBase.LOGIN, TestBase.PASSWORD);
     driver.navigate().to("http://localhost/litecart/admin/?app=geo_zones&doc=geo_zones");
     wait.until(titleIs("Geo Zones | My Store"));
