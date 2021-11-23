@@ -3,11 +3,13 @@ package ru.stqa.selenium.litercart;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TestBase {
+
 
   static  WebDriver driver;
   static  WebDriverWait wait;
@@ -31,4 +33,5 @@ public class TestBase {
     driver = null;
 
   }
+
 }

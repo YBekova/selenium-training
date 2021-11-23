@@ -2,6 +2,7 @@ package ru.stqa.selenium.litercart;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
@@ -10,46 +11,71 @@ import java.util.NoSuchElementException;
 
 public class LeftMenuCheckTest extends TestBase {
 
+  private int linksCount;
+  private int docsCount;
+  private String pageName;
+  private WebElement row;
+  private WebElement link;
+
   @Test
-  public void leftMenuCheck() {
+  public void leftMenuCheck() throws InterruptedException {
 
     LoginTest.logInAdmin(TestBase.LOGIN, TestBase.PASSWORD);
-    ArrayList<String> leftMenuList = new ArrayList<>();
-    List<WebElement> leftMenu = driver.findElements(By.xpath("//ul[@id='box-apps-menu']/li"));
 
-    for (WebElement element : leftMenu) {
-      leftMenuList.add(element.getText());
-    }
+    linksCount = driver.findElements(By.cssSelector("ul#box-apps-menu li#app-")).size();
 
-    for (int i = 0; i < leftMenuList.size(); i++) {
+    for (int i = 1; i <= linksCount; i++) {
 
-      driver.findElement(By.linkText(leftMenuList.get(i))).click();
-      System.out.print(leftMenuList.get(i) + " - go to page: check");
+      link = refreshPage(i);
+      pageName = link.findElement(By.xpath(".//span[@class='name']")).getText();
+      link.click();
+      link = refreshPage(i);
+      docsCount = link.findElements(By.xpath("./ul[@class='docs']/li[@id]")).size();
 
-      searchTag("h1");
-
-      ArrayList<String> leftSubMenuList = new ArrayList<>();
-      List<WebElement> subMenu = driver.findElements(By.xpath("//ul[@class='docs']/li"));
-
-      if (subMenu.size() > 0) {
-        for (WebElement element : subMenu) {
-          leftSubMenuList.add(element.getText());
+      if (docsCount > 0) {
+        for (int j = 1; j <= docsCount; j++) {
+          link = refreshPage(i);
+          row = link.findElement(By.xpath("./ul[@class='docs']/li[@id][" + j + "]"));
+          pageName = row.findElement(By.xpath(".//span[@class='name']")).getText();
+          row.click();
+          checkHeader(pageName);
+          Thread.sleep(250);
         }
-
-        for (int n = 0; n < leftSubMenuList.size(); n++) {
-
-          driver.findElement(By.linkText(leftSubMenuList.get(n))).click();
-          System.out.print("  |-" + leftSubMenuList.get(n) + " - go to page: check");
-
-          searchTag("h1");
-        }
+      } else {
+        checkHeader(pageName);
       }
+      Thread.sleep(500);
+    }
+
+  }
+
+  private WebElement refreshPage(int i) {
+    WebElement row = driver.findElement(By.id("box-apps-menu"));
+    WebElement link = row.findElement(By.xpath("./li[@id='app-'][" + i + "]"));
+    return link;
+  }
+
+  private void checkHeader(String pageName) {
+    String h1;
+    String res = "*** The page " + pageName;
+    if (isElementPresent(By.xpath(".//td[@id='content']/h1"))) {
+      h1 = driver.findElement(By.xpath(".//td[@id='content']/h1")).getText();
+      res += " have a header " + h1 + ".";
+    } else
+      res += " not have header h1";
+
+    System.out.println(res);
+  }
+
+  boolean isElementPresent(By locator) {
+    try {
+      driver.findElement(locator);
+      return true;
+    } catch (NoSuchElementException ex) {
+      return false;
     }
   }
 
-  private void searchTag(String tag) throws NoSuchElementException {
-    System.out.println("       tag \"" + tag + "\" " + driver.findElement(By.tagName(tag)).getText());
-  }
 
 }
 
