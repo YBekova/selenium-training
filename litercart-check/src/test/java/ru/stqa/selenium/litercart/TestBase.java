@@ -22,7 +22,7 @@ public class TestBase {
 
     WebDriverManager.firefoxdriver().setup();
     driver = new FirefoxDriver();
-    wait = new WebDriverWait(driver, 10);
+    wait = new WebDriverWait(driver, 20);
 
   }
 
