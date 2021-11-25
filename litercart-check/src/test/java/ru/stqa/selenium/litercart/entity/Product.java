@@ -2,7 +2,7 @@ package ru.stqa.selenium.litercart.entity;
 
 import lombok.Data;
 import org.openqa.selenium.WebElement;
-import ru.stqa.selenium.litercart.TestBase;
+import ru.stqa.selenium.litercart.tests.TestBase;
 
 @Data
 public class Product extends TestBase {

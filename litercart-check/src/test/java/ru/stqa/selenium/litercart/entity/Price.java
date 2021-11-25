@@ -3,7 +3,7 @@ package ru.stqa.selenium.litercart.entity;
 import lombok.Data;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.Color;
-import ru.stqa.selenium.litercart.TestBase;
+import ru.stqa.selenium.litercart.tests.TestBase;
 
 @Data
 public class Price extends TestBase {

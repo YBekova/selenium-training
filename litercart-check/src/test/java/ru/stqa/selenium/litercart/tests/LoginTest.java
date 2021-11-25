@@ -1,4 +1,4 @@
-package ru.stqa.selenium.litercart;
+package ru.stqa.selenium.litercart.tests;
 
 import org.junit.Test;
 import org.openqa.selenium.By;

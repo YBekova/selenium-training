@@ -5,14 +5,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import ru.stqa.selenium.litercart.TestBase;
 
 public class NewAccountCreationTest extends TestBase {
 
 
   @Test
-  public void mainTest() throws InterruptedException {
+  public void newAccountCreationTest() throws InterruptedException {
     driver.get("http://localhost/litecart/en/");
 
     String email = "tuman@gmail.com";
@@ -41,6 +39,7 @@ public class NewAccountCreationTest extends TestBase {
     //Country
     WebElement select = findElementByCssSelector(null,"select[name=country_code]");
     changeSelectValueJS(select, "US");
+    //State
     select = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("select[name=zone_code]")));
     changeSelectValueJS(select, "AK");
     //*****

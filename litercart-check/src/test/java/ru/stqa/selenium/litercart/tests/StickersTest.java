@@ -1,4 +1,4 @@
-package ru.stqa.selenium.litercart;
+package ru.stqa.selenium.litercart.tests;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class StickersTest extends TestBase{
+public class StickersTest extends TestBase {
 
   private List<WebElement> productList;
   private List<WebElement> sticksList;

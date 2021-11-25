@@ -1,4 +1,4 @@
-package ru.stqa.selenium.litercart;
+package ru.stqa.selenium.litercart.tests;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -11,7 +11,7 @@ import java.util.List;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 
-public class CheckTest extends TestBase{
+public class CheckTest extends TestBase {
 
 
   @Test
