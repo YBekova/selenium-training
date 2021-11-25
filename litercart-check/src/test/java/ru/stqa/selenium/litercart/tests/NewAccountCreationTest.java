@@ -1,10 +1,13 @@
 package ru.stqa.selenium.litercart.tests;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.util.Random;
 
 public class NewAccountCreationTest extends TestBase {
 
@@ -13,7 +16,8 @@ public class NewAccountCreationTest extends TestBase {
   public void newAccountCreationTest() throws InterruptedException {
     driver.get("http://localhost/litecart/en/");
 
-    String email = "tuman@gmail.com";
+
+    String email = randomEmail();
     String password = "456789";
 
     createAccount(email, password);
@@ -27,6 +31,10 @@ public class NewAccountCreationTest extends TestBase {
 
     logout();
     Thread.sleep(1000);
+  }
+
+  private String randomEmail(){
+        return RandomStringUtils.randomAlphabetic(8)+ "@gmail.com";
   }
 
   private void createAccount(String email, String password) {
