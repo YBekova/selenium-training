@@ -34,20 +34,20 @@ public class AddNewProductTest extends TestBase {
     Path filePath = Paths.get(relativePath);
     String absolutePath = filePath.normalize().toAbsolutePath().toString();
 
-    //******* filling General
+    // filling General
     fillTabGeneral(newItem, absolutePath);
 
-    //******* filling Information
+    // filling Information
     searchAndClick("div.tabs li", "Information");
     Thread.sleep(1000);
     fillTabInformation();
 
-    //******** filling Prices
+    // filling Prices
     searchAndClick("div.tabs li", "Prices");
     Thread.sleep(1000);
     fillTabPrices();
 
-    //Save
+    // Save
     driver.findElement(By.cssSelector("button[name=save]")).click();
     Thread.sleep(1000);
 
@@ -56,24 +56,30 @@ public class AddNewProductTest extends TestBase {
   }
 
   private void fillTabGeneral(String item, String path){
-    //Name
+
+    // Name
     driver.findElement(By.name("name[en]")).sendKeys(item);
-    //Status
+
+    // Status
     driver.findElement(By.cssSelector("input[name=status][value='1']")).click();
-    //Code
+
+    // Code
     driver.findElement(By.name("code")).sendKeys("rp001");
-    //Categories
+
+    // Categories
     driver.findElement(By.cssSelector("input[type=checkbox][value='0']")).click();
     driver.findElement(By.cssSelector("input[type=checkbox][value='1']")).click();
-    //Quantity
+
+    // Quantity
     driver.findElement(By.name("quantity")).sendKeys(Keys.CONTROL + "a" + Keys.DELETE );
     driver.findElement(By.name("quantity")).sendKeys("50");
-    //Upload file
+
+    // Upload file
     driver.findElement(By.name("new_images[]")).sendKeys(path);
   }
 
   private void fillTabInformation() {
-    //Manufacrurer
+    // Manufacrurer
     Select manufact = new Select(driver.findElement(By.name("manufacturer_id")));
     manufact.selectByVisibleText("ACME Corp.");
     //Short Description
