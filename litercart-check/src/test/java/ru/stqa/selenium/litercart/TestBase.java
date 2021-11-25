@@ -13,8 +13,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class TestBase {
 
 
-  static  WebDriver driver;
-  static  WebDriverWait wait;
+  protected static  WebDriver driver;
+  protected static  WebDriverWait wait;
 
   public static final String LOGIN = "admin";
   public static final String PASSWORD = "admin";

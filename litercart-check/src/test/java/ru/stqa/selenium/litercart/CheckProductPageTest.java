@@ -67,6 +67,4 @@ public class CheckProductPageTest extends TestBase {
             productPageProduct.getCampaignPrice().getFontSize() > productPageProduct.getRegularPrice().getFontSize());
   }
 
-
-
 }
