@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Set;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
-import static ru.stqa.selenium.litercart.tests.TestBase.driver;
+
 
 public class CheckLinksTest extends TestBase{
 
@@ -31,17 +31,23 @@ public class CheckLinksTest extends TestBase{
     String parentWind = driver.getWindowHandle();
     Set<String> oldWnds = driver.getWindowHandles();
     for (WebElement link:extLinks) {
+
       link.click();
 
       //wait.until(ExpectedConditions.numberOfWindowsToBe(2));
       String newWindowHnd = wait.until(new ExpectedCondition<String>() {
+
         @Override
         public String apply(WebDriver input) {
+
           Set<String> newWinds = input.getWindowHandles();
           newWinds.removeAll(oldWnds);
           return newWinds.size()>0 ? newWinds.iterator().next() : null;
+
         }
       });
+
+
       driver.switchTo().window(newWindowHnd);
 
       // for Firefox: waiting for page title
@@ -49,6 +55,7 @@ public class CheckLinksTest extends TestBase{
       System.out.println("Visited page title is: " + driver.getTitle());
       driver.close();
       driver.switchTo().window(parentWind);
+
     }
   }
 
