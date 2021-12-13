@@ -4,6 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.stqa.selenium.litercart.pajeobjects.pages.CartPage;
 import ru.stqa.selenium.litercart.pajeobjects.pages.ItemPage;
@@ -19,8 +20,8 @@ public class Application {
 
   public Application() {
 
-    WebDriverManager.chromedriver().setup();
-    driver = new ChromeDriver();
+    WebDriverManager.firefoxdriver().setup();
+    driver = new FirefoxDriver();
     wait = new WebDriverWait(driver, 10);
     mainPage = new MainPage(driver);
     cartPage = new CartPage(driver);

@@ -17,7 +17,7 @@ public class CartPage extends Page {
   @FindBy(css = "li.shortcut")
   public List<WebElement> itemSet;
 
-  @FindBy(css = "li.shortcut")
+  @FindBy(css = "ul.shortcuts li")
   public WebElement firstItem;
 
   @FindBy(name = "remove_cart_item")
@@ -34,13 +34,9 @@ public class CartPage extends Page {
   public void clearCart(){
 
     int count = itemSet.size();
-    for (int i=count; i>1; i--)
+    for (int i=count; i>1; i--) {
       deleteOneItem();
-    removeBtn.click();
-    implicitlyWaitOff();
-    wait.until(ExpectedConditions.stalenessOf(driver.findElement(By.cssSelector("table.dataTable"))));
-    implicitlyWaitOn();
-
+    }
   }
 
   protected void deleteOneItem() {
