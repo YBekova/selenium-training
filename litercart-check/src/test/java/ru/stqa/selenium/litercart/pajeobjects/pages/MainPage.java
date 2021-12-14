@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class MainPage extends Page{
+public class MainPage extends Page {
 
   @FindBy(css = "div.content div.name")
   public WebElement firstItem;

@@ -3,7 +3,6 @@ package ru.stqa.selenium.litercart.pajeobjects.app;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.stqa.selenium.litercart.pajeobjects.pages.CartPage;
