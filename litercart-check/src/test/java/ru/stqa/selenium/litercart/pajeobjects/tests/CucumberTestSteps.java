@@ -1,16 +1,11 @@
 package ru.stqa.selenium.litercart.pajeobjects.tests;
 
-import io.cucumber.java8.En;
-import ru.stqa.selenium.litercart.pajeobjects.app.Application;
 
 
-public class CucumberTestSteps implements En {
+public class CucumberTestSteps extends  CucumberTestBase {
 
-    public static Application app = new Application();
 
-    static {
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> { app.quit(); app = null; }));
-    }
+
 
     public CucumberTestSteps() {
         Given("^we open 'http://localhost/litecart/en/'$", () -> {
